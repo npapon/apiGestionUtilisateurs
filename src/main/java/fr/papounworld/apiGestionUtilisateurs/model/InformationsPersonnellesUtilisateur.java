@@ -19,13 +19,23 @@ public class InformationsPersonnellesUtilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+    
+    private String prenom ;
+    
+    private String nom  ;
+    
+    private String email ;
+    
     private String adresse;
     private String telephone;
     
-    @OneToOne( cascade = CascadeType.ALL ) 
-    @JoinColumn( name="id_utilisateur",referencedColumnName = "id" )
-    private Utilisateur utilisateur;
+ 
 
-     
+   /* 
+    @Override
+    public String toString() {
+    	return this.adresse;
+    }*/
+    
 
 }

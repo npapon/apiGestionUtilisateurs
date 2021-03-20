@@ -19,9 +19,27 @@ public class InformationsPersonnellesUtilisateurService {
 	private InformationsPersonnellesUtilisateurRepository informationsPersonnellesUtilisateurRepository;
 	
 	
-	public Optional<InformationsPersonnellesUtilisateur> getInformationsPersonnellesUtilisateur(final Long id){
+	public Iterable<InformationsPersonnellesUtilisateur> getInformationsPersonnellesUtilisateur(){	
+		return informationsPersonnellesUtilisateurRepository.findAll();
+	}	
+	
+	public Optional<InformationsPersonnellesUtilisateur> getInformationPersonnellesUtilisateur(final Long id){
 		return informationsPersonnellesUtilisateurRepository.findById(id);
 		
 	}
+	
+	public void deleteInformationPersonnellesUtilisateur(final long id) {
+		
+		informationsPersonnellesUtilisateurRepository.deleteById(id);
+	}
+	
+	
+	public InformationsPersonnellesUtilisateur saveInformationPersonnellesUtilisateur(InformationsPersonnellesUtilisateur informationsPersonnellesUtilisateur) {
+
+		informationsPersonnellesUtilisateurRepository.save(informationsPersonnellesUtilisateur);
+		return informationsPersonnellesUtilisateur;
+		
+	}
+	
 
 }

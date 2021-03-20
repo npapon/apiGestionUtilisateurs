@@ -3,6 +3,7 @@ package fr.papounworld.apiGestionUtilisateurs.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,15 +58,10 @@ public class UtilisateurController {
 			if(utilisateurBody.getMotdepasse()!=null)
 			{utilisateurUrl.setMotdepasse(utilisateurBody.getMotdepasse());}
 			
-			if(utilisateurBody.getPrenom( )!=null)
-			{utilisateurUrl.setPrenom(utilisateurBody.getPrenom());}
+
+			if(utilisateurBody.getInformationsPersonnellesUtilisateur()!=null)
+			{utilisateurUrl.setInformationsPersonnellesUtilisateur(utilisateurBody.getInformationsPersonnellesUtilisateur());}
 			
-			
-			if(utilisateurBody.getNom( )!=null)
-			{utilisateurUrl.setNom(utilisateurBody.getNom());}
-			
-			if(utilisateurBody.getEmail( )!=null)
-			{utilisateurUrl.setEmail(utilisateurBody.getEmail());}
 			
 			utilisateurService.saveUtilisateur(utilisateurUrl);
 			return utilisateurUrl;
@@ -74,6 +70,11 @@ public class UtilisateurController {
 		
 			return null;
 		}
+	}
+	
+	@DeleteMapping("/utilisateur/{id}")
+	public void deleteUtilisateur(@PathVariable("id") final Long id) {
+		utilisateurService.deleteUtilisateur(id);
 	}
 
 }

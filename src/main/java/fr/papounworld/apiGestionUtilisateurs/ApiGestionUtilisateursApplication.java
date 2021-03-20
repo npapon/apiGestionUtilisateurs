@@ -31,15 +31,21 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 		
 		
 		
-		Optional<Utilisateur> utilisateurOptional = utilisateurService.getUtilisateur((long) 12) ;
+		Optional<Utilisateur> utilisateurOptional = utilisateurService.getUtilisateur((long) 1) ;
 		
-		Optional<InformationsPersonnellesUtilisateur> informationsPersonnellesUtilisateurOptional = informationsPersonnellesUtilisateurService.getInformationsPersonnellesUtilisateur((long) 1) ;
+		Optional<InformationsPersonnellesUtilisateur> informationsPersonnellesUtilisateurOptional = informationsPersonnellesUtilisateurService.getInformationPersonnellesUtilisateur((long) 1) ;
 	
+		InformationsPersonnellesUtilisateur informationsPersonnellesUtilisateur = informationsPersonnellesUtilisateurOptional.get();
+
+		
 Utilisateur utilisateur = utilisateurOptional.get();
 
-InformationsPersonnellesUtilisateur informationsPersonnellesUtilisateur = informationsPersonnellesUtilisateurOptional.get();
-System.out.println(utilisateur);
-System.out.println(informationsPersonnellesUtilisateur);
+System.out.println("Objet utilisateur " + utilisateur);
+System.out.println("Objet information personnelle " + informationsPersonnellesUtilisateur);
+
+
+//System.out.println(utilisateur.getInformationsPersonnellesUtilisateur());
+
 		
 	}
 
