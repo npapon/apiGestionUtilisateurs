@@ -10,20 +10,25 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "informations_personnelles_utilisateur")
-public class InformationsPersonnellesUtilisateur {
+@Table(name = "privileges")
+public class Privilege {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String prenom;
+	private String libelle;
 
-	private String nom;
+	private String impact;
 
-	private String email;
-
-	private String adresse;
-	private String telephone;
+	/*
+	 * @OneToOne
+	 * 
+	 * @JoinTable(name = "association_roles_privileges", joinColumns
+	 * = @JoinColumn(name = "id_privilege"), inverseJoinColumns = @JoinColumn(name =
+	 * "id_role"))
+	 * 
+	 * private Role role;
+	 */
 
 }

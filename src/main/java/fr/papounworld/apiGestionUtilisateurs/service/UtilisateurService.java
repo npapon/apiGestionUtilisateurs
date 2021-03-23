@@ -12,31 +12,29 @@ import lombok.Data;
 @Data
 @Service
 public class UtilisateurService {
-	
+
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
-	
-	public Iterable<Utilisateur> getUtilisateurs(){	
+
+	public Iterable<Utilisateur> getUtilisateurs() {
 		return utilisateurRepository.findAll();
-	}	
-	
-	public Optional<Utilisateur> getUtilisateur(final Long id){
-		return utilisateurRepository.findById(id);
-		
 	}
-	
+
+	public Optional<Utilisateur> getUtilisateur(final Long id) {
+		return utilisateurRepository.findById(id);
+
+	}
+
 	public void deleteUtilisateur(final long id) {
-		
+
 		utilisateurRepository.deleteById(id);
 	}
-	
-	
+
 	public Utilisateur saveUtilisateur(Utilisateur utilisateur) {
 
 		utilisateurRepository.save(utilisateur);
 		return utilisateur;
-		
-	}
 
+	}
 
 }

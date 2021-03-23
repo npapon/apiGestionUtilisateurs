@@ -11,19 +11,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name ="role_par_utilisateur")
-public class RoleUtilisateur {
-	
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "association_roles_utilisateur")
+public class AssociationRolesUtilisateur {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-    
-    @Column(name="id_utilisateur")
-    private  long idUtilisateur;
-    
-    @Column(name="id_role")
-    private  long idRole;
-	
+
+	@Column(name = "id_role")
+	private int idRole;
+
+	@Column(name = "id_utilisateur")
+	private int idUtilisateur;
 
 }

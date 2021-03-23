@@ -1,5 +1,6 @@
 package fr.papounworld.apiGestionUtilisateurs.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,20 +11,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "informations_personnelles_utilisateur")
-public class InformationsPersonnellesUtilisateur {
+@Table(name = "association_roles_privileges")
+public class AssociationRolePrivilege {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String prenom;
+	@Column(name = "id_role")
+	private int idRole;
 
-	private String nom;
-
-	private String email;
-
-	private String adresse;
-	private String telephone;
+	@Column(name = "id_privilege")
+	private int idPrivilege;
 
 }
