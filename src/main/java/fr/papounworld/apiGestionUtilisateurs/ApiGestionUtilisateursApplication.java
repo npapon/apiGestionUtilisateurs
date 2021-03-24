@@ -7,8 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.papounworld.apiGestionUtilisateurs.model.ConnexionsUtilisateur;
 import fr.papounworld.apiGestionUtilisateurs.model.InformationsPersonnellesUtilisateur;
 import fr.papounworld.apiGestionUtilisateurs.model.Utilisateur;
+import fr.papounworld.apiGestionUtilisateurs.service.ConnexionsUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.InformationsPersonnellesUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
@@ -24,6 +26,9 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 
 	@Autowired
 	public RoleService roleService;
+
+	@Autowired
+	public ConnexionsUtilisateurService connexionsUtilisateurService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGestionUtilisateursApplication.class, args);
@@ -41,10 +46,12 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 				.get();
 
 		Utilisateur utilisateur = utilisateurOptional.get();
+		Optional<ConnexionsUtilisateur> connectionsUtilisateurOptional = connexionsUtilisateurService
+				.getConnexionsUtilisateur(1L);
 
 		System.out.println("Objet utilisateur " + utilisateur);
 		System.out.println("Objet information personnelle " + informationsPersonnellesUtilisateur);
-
+		System.out.println(connectionsUtilisateurOptional.get().getConnexionDate());
 //System.out.println(utilisateur.getInformationsPersonnellesUtilisateur());
 
 	}
