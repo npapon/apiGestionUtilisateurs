@@ -20,7 +20,7 @@ public class AssociationRolePrivilegeController {
 	@Autowired
 	private AssociationRolePrivilegeService associationRolePrivilegeService;
 
-	@GetMapping("/associationrolesprivileges")
+	@GetMapping("/associationroleprivilege")
 	public Iterable<AssociationRolePrivilege> getAssociationRolePrivileges() {
 		return associationRolePrivilegeService.getAssociationRolePrivileges();
 	}

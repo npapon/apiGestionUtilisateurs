@@ -20,7 +20,7 @@ public class AssociationRolesUtilisateurController {
 	@Autowired
 	private AssociationRolesUtilisateurService associationRolesUtilisateurService;
 
-	@GetMapping("/associationallrolesutilisateur")
+	@GetMapping("/associationrolesutilisateur")
 	public Iterable<AssociationRolesUtilisateur> getAssociationRolesUtilisateurs() {
 		return associationRolesUtilisateurService.getAllAssociationRolesUtilisateurs();
 	}
@@ -55,6 +55,10 @@ public class AssociationRolesUtilisateurController {
 
 			if (associationRolesUtilisateurBody.getIdRole() != 0) {
 				associationRolesUtilisateurUrl.setIdRole(associationRolesUtilisateurBody.getIdRole());
+			}
+
+			if (associationRolesUtilisateurBody.getIdUtilisateur() != 0) {
+				associationRolesUtilisateurUrl.setIdUtilisateur(associationRolesUtilisateurBody.getIdUtilisateur());
 			}
 
 			return associationRolesUtilisateurUrl;

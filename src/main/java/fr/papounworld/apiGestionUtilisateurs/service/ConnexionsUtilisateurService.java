@@ -30,10 +30,10 @@ public class ConnexionsUtilisateurService {
 		connexionsUtilisateurRepository.deleteById(id);
 	}
 
-	public ConnexionsUtilisateur saveConnexionsUtilisateur(ConnexionsUtilisateur ConnexionsUtilisateur) {
+	public ConnexionsUtilisateur saveConnexionsUtilisateur(ConnexionsUtilisateur connexionsUtilisateur) {
 
-		connexionsUtilisateurRepository.save(ConnexionsUtilisateur);
-		return ConnexionsUtilisateur;
+		connexionsUtilisateurRepository.save(connexionsUtilisateur);
+		return connexionsUtilisateur;
 
 	}
 

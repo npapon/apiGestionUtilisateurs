@@ -20,7 +20,7 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 
-	@GetMapping("/roles")
+	@GetMapping("/role")
 	public Iterable<Role> getRoles() {
 		return roleService.getRoles();
 	}

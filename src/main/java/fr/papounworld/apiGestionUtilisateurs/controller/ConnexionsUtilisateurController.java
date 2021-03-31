@@ -20,7 +20,7 @@ public class ConnexionsUtilisateurController {
 	@Autowired
 	private ConnexionsUtilisateurService connexionsUtilisateurService;
 
-	@GetMapping("/connexionsUtilisateurs")
+	@GetMapping("/connexionsUtilisateur")
 	public Iterable<ConnexionsUtilisateur> getConnexionsUtilisateurs() {
 		return connexionsUtilisateurService.getConnexionsUtilisateurs();
 	}

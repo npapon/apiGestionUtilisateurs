@@ -20,7 +20,7 @@ public class PrivilegeController {
 	@Autowired
 	private PrivilegeService privilegeService;
 
-	@GetMapping("/privileges")
+	@GetMapping("/privilege")
 	public Iterable<Privilege> getPrivileges() {
 		return privilegeService.getPrivileges();
 	}

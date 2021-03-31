@@ -12,30 +12,29 @@ import lombok.Data;
 @Data
 @Service
 public class RoleService {
-	
+
 	@Autowired
 	private RoleRepository roleRepository;
-	
-	public Iterable<Role> getRoles(){	
+
+	public Iterable<Role> getRoles() {
 		return roleRepository.findAll();
-	}	
-	
-	public Optional<Role> getRole(final Long id){
-		return roleRepository.findById(id);
-		
 	}
-	
+
+	public Optional<Role> getRole(final Long id) {
+		return roleRepository.findById(id);
+
+	}
+
 	public void deleteRole(final long id) {
-		
+
 		roleRepository.deleteById(id);
 	}
-	
-	
-	public Role saveRole(Role Role) {
 
-		roleRepository.save(Role);
-		return Role;
-		
+	public Role saveRole(Role role) {
+
+		roleRepository.save(role);
+		return role;
+
 	}
 
 }

@@ -20,7 +20,7 @@ public class InformationsPersonnellesUtilisateurController {
 	@Autowired
 	private InformationsPersonnellesUtilisateurService informationsPersonnellesUtilisateurService;
 
-	@GetMapping("/informationspersonnelles")
+	@GetMapping("/informationpersonnelle")
 	public Iterable<InformationsPersonnellesUtilisateur> getInformationsPersonnellesUtilisateur() {
 		return informationsPersonnellesUtilisateurService.getInformationsPersonnellesUtilisateur();
 	}
