@@ -13,8 +13,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "fichiers_utilisateur")
-public class FichiersUtilisateur {
+@Table(name = "fichier_utilisateur")
+public class FichierUtilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

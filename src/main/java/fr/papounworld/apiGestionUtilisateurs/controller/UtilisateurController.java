@@ -54,9 +54,9 @@ public class UtilisateurController {
 				utilisateurUrl.setMotdepasse(utilisateurBody.getMotdepasse());
 			}
 
-			if (utilisateurBody.getInformationsPersonnellesUtilisateur() != null) {
-				utilisateurUrl.setInformationsPersonnellesUtilisateur(
-						utilisateurBody.getInformationsPersonnellesUtilisateur());
+			if (utilisateurBody.getInformationPersonnelleUtilisateur() != null) {
+				utilisateurUrl
+						.setInformationPersonnelleUtilisateur(utilisateurBody.getInformationPersonnelleUtilisateur());
 			}
 
 			utilisateurService.saveUtilisateur(utilisateurUrl);

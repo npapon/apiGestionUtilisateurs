@@ -23,7 +23,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "utilisateurs")
+@Table(name = "utilisateur")
 public class Utilisateur {
 
 	@Id
@@ -35,11 +35,11 @@ public class Utilisateur {
 	private String motdepasse;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_informations_personnelles_utilisateur", referencedColumnName = "id", nullable = false)
-	private InformationsPersonnellesUtilisateur informationsPersonnellesUtilisateur;
+	@JoinColumn(name = "id_information_personnelle_utilisateur", referencedColumnName = "id", nullable = false)
+	private InformationPersonnelleUtilisateur informationPersonnelleUtilisateur;
 
-	@OneToMany(targetEntity = FichiersUtilisateur.class, mappedBy = "idUtilisateur", fetch = FetchType.EAGER)
-	private List<FichiersUtilisateur> fichiers = new ArrayList<>();
+	@OneToMany(targetEntity = FichierUtilisateur.class, mappedBy = "idUtilisateur", fetch = FetchType.EAGER)
+	private List<FichierUtilisateur> fichiers = new ArrayList<>();
 
 	/*
 	 * @ManyToMany(fetch = FetchType.EAGER)

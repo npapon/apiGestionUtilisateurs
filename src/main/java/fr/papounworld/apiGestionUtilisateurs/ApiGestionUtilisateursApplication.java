@@ -7,11 +7,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import fr.papounworld.apiGestionUtilisateurs.model.ConnexionsUtilisateur;
-import fr.papounworld.apiGestionUtilisateurs.model.InformationsPersonnellesUtilisateur;
+import fr.papounworld.apiGestionUtilisateurs.model.ConnexionUtilisateur;
+import fr.papounworld.apiGestionUtilisateurs.model.InformationPersonnelleUtilisateur;
 import fr.papounworld.apiGestionUtilisateurs.model.Utilisateur;
-import fr.papounworld.apiGestionUtilisateurs.service.ConnexionsUtilisateurService;
-import fr.papounworld.apiGestionUtilisateurs.service.InformationsPersonnellesUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
@@ -22,13 +22,13 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 	public UtilisateurService utilisateurService;
 
 	@Autowired
-	public InformationsPersonnellesUtilisateurService informationsPersonnellesUtilisateurService;
+	public InformationPersonnelleUtilisateurService informationsPersonnellesUtilisateurService;
 
 	@Autowired
 	public RoleService roleService;
 
 	@Autowired
-	public ConnexionsUtilisateurService connexionsUtilisateurService;
+	public ConnexionUtilisateurService connexionsUtilisateurService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGestionUtilisateursApplication.class, args);
@@ -39,15 +39,15 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 
 		Optional<Utilisateur> utilisateurOptional = utilisateurService.getUtilisateur((long) 1);
 
-		Optional<InformationsPersonnellesUtilisateur> informationsPersonnellesUtilisateurOptional = informationsPersonnellesUtilisateurService
+		Optional<InformationPersonnelleUtilisateur> informationsPersonnellesUtilisateurOptional = informationsPersonnellesUtilisateurService
 				.getInformationPersonnellesUtilisateur((long) 1);
 
-		InformationsPersonnellesUtilisateur informationsPersonnellesUtilisateur = informationsPersonnellesUtilisateurOptional
+		InformationPersonnelleUtilisateur informationsPersonnellesUtilisateur = informationsPersonnellesUtilisateurOptional
 				.get();
 
 		Utilisateur utilisateur = utilisateurOptional.get();
-		Optional<ConnexionsUtilisateur> connectionsUtilisateurOptional = connexionsUtilisateurService
-				.getConnexionsUtilisateur(1L);
+		Optional<ConnexionUtilisateur> connectionsUtilisateurOptional = connexionsUtilisateurService
+				.getConnexionUtilisateur(1L);
 
 		System.out.println("Objet utilisateur " + utilisateur);
 		System.out.println("Objet information personnelle " + informationsPersonnellesUtilisateur);

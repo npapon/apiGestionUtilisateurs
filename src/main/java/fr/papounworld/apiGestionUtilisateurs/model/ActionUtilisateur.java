@@ -16,8 +16,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "actions_utilisateur")
-public class ActionsUtilisateur {
+@Table(name = "action_utilisateur")
+public class ActionUtilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,8 +15,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "connexions_utilisateur")
-public class ConnexionsUtilisateur {
+@Table(name = "connexion_utilisateur")
+public class ConnexionUtilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
