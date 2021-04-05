@@ -1,7 +1,5 @@
 package fr.papounworld.apiGestionUtilisateurs.model;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "action_applicative")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "discriminant", discriminatorType = DiscriminatorType.INTEGER)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ActionApplicative {
 
 	@Id
