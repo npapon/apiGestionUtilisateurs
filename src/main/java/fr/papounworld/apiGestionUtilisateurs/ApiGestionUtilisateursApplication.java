@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.papounworld.apiGestionUtilisateurs.model.ConnexionUtilisateur;
 import fr.papounworld.apiGestionUtilisateurs.model.InformationPersonnelleUtilisateur;
 import fr.papounworld.apiGestionUtilisateurs.model.Utilisateur;
+import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
@@ -29,6 +30,9 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 
 	@Autowired
 	public ConnexionUtilisateurService connexionsUtilisateurService;
+
+	@Autowired
+	public ActionUtilisateurService actionUtilisateurService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGestionUtilisateursApplication.class, args);
@@ -54,6 +58,7 @@ public class ApiGestionUtilisateursApplication implements CommandLineRunner {
 		System.out.println(connectionsUtilisateurOptional.get().getConnexionDate());
 //System.out.println(utilisateur.getInformationsPersonnellesUtilisateur());
 
+		actionUtilisateurService.deleteActionUtilisateur(3L);
 	}
 
 }
