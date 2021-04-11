@@ -16,7 +16,7 @@ public class ActionApplicativeService {
 	@Autowired
 	private ActionApplicativeRepository actionApplicativeRepository;
 
-	public Iterable<ActionApplicative> getActionApplicative() {
+	public Iterable<ActionApplicative> getActionsApplicative() {
 		return actionApplicativeRepository.findAll();
 	}
 
