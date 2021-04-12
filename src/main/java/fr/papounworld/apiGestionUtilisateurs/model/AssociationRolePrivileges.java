@@ -11,8 +11,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "association_roles_privileges")
-public class AssociationRolePrivilege {
+@Table(name = "association_role_privileges")
+public class AssociationRolePrivileges {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

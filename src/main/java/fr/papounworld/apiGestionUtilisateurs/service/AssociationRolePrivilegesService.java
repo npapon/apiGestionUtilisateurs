@@ -5,22 +5,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.papounworld.apiGestionUtilisateurs.model.AssociationRolePrivilege;
-import fr.papounworld.apiGestionUtilisateurs.repository.AssociationRolePrivilegeRepository;
+import fr.papounworld.apiGestionUtilisateurs.model.AssociationRolePrivileges;
+import fr.papounworld.apiGestionUtilisateurs.repository.AssociationRolePrivilegesRepository;
 import lombok.Data;
 
 @Data
 @Service
-public class AssociationRolePrivilegeService {
+public class AssociationRolePrivilegesService {
 
 	@Autowired
-	private AssociationRolePrivilegeRepository associationRolePrivilegeRepository;
+	private AssociationRolePrivilegesRepository associationRolePrivilegeRepository;
 
-	public Iterable<AssociationRolePrivilege> getAssociationRolePrivileges() {
+	public Iterable<AssociationRolePrivileges> getAssociationRolePrivileges() {
 		return associationRolePrivilegeRepository.findAll();
 	}
 
-	public Optional<AssociationRolePrivilege> getAssociationRolePrivilege(final Long id) {
+	public Optional<AssociationRolePrivileges> getAssociationRolePrivilege(final Long id) {
 		return associationRolePrivilegeRepository.findById(id);
 
 	}
@@ -30,7 +30,7 @@ public class AssociationRolePrivilegeService {
 		associationRolePrivilegeRepository.deleteById(id);
 	}
 
-	public AssociationRolePrivilege saveAssociationRolePrivilege(AssociationRolePrivilege AssociationRolePrivilege) {
+	public AssociationRolePrivileges saveAssociationRolePrivilege(AssociationRolePrivileges AssociationRolePrivilege) {
 
 		associationRolePrivilegeRepository.save(AssociationRolePrivilege);
 		return AssociationRolePrivilege;

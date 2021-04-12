@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.papounworld.apiGestionUtilisateurs.model.AssociationRolePrivilege;
-import fr.papounworld.apiGestionUtilisateurs.service.AssociationRolePrivilegeService;
+import fr.papounworld.apiGestionUtilisateurs.model.AssociationRolePrivileges;
+import fr.papounworld.apiGestionUtilisateurs.service.AssociationRolePrivilegesService;
 
 @RestController
-public class AssociationRolePrivilegeController {
+public class AssociationRolePrivilegesController {
 
 	@Autowired
-	private AssociationRolePrivilegeService associationRolePrivilegeService;
+	private AssociationRolePrivilegesService associationRolePrivilegeService;
 
-	@GetMapping("/associationroleprivilege")
-	public Iterable<AssociationRolePrivilege> getAssociationRolePrivileges() {
+	@GetMapping("/associationroleprivileges")
+	public Iterable<AssociationRolePrivileges> getAssociationRolePrivileges() {
 		return associationRolePrivilegeService.getAssociationRolePrivileges();
 	}
 
-	@GetMapping("/associationroleprivilege/{id}")
-	public AssociationRolePrivilege getAssociationRolePrivilege(@PathVariable("id") final Long id) {
-		Optional<AssociationRolePrivilege> associationRolePrivilege = associationRolePrivilegeService
+	@GetMapping("/associationroleprivileges/{id}")
+	public AssociationRolePrivileges getAssociationRolePrivilege(@PathVariable("id") final Long id) {
+		Optional<AssociationRolePrivileges> associationRolePrivilege = associationRolePrivilegeService
 				.getAssociationRolePrivilege(id);
 		if (associationRolePrivilege.isPresent()) {
 			return associationRolePrivilege.get();
@@ -36,20 +36,20 @@ public class AssociationRolePrivilegeController {
 		}
 	}
 
-	@PostMapping("/associationroleprivilege")
-	public AssociationRolePrivilege createAssociationRolePrivilege(
-			@RequestBody AssociationRolePrivilege associationRolePrivilege) {
+	@PostMapping("/associationroleprivileges")
+	public AssociationRolePrivileges createAssociationRolePrivilege(
+			@RequestBody AssociationRolePrivileges associationRolePrivilege) {
 		return associationRolePrivilegeService.saveAssociationRolePrivilege(associationRolePrivilege);
 	}
 
-	@PutMapping("/associationrolePrivilege/{id}")
-	public AssociationRolePrivilege updateAssociationRolePrivilege(@PathVariable("id") final Long id,
-			@RequestBody AssociationRolePrivilege associationRolePrivilegeBody) {
+	@PutMapping("/associationroleprivileges/{id}")
+	public AssociationRolePrivileges updateAssociationRolePrivilege(@PathVariable("id") final Long id,
+			@RequestBody AssociationRolePrivileges associationRolePrivilegeBody) {
 
-		Optional<AssociationRolePrivilege> optionalAssociationRolePrivilegeUrl = associationRolePrivilegeService
+		Optional<AssociationRolePrivileges> optionalAssociationRolePrivilegeUrl = associationRolePrivilegeService
 				.getAssociationRolePrivilege(id);
 		if (optionalAssociationRolePrivilegeUrl.isPresent()) {
-			AssociationRolePrivilege associationRolePrivilegeUrl = optionalAssociationRolePrivilegeUrl.get();
+			AssociationRolePrivileges associationRolePrivilegeUrl = optionalAssociationRolePrivilegeUrl.get();
 
 			associationRolePrivilegeService.saveAssociationRolePrivilege(associationRolePrivilegeUrl);
 
@@ -68,7 +68,7 @@ public class AssociationRolePrivilegeController {
 		}
 	}
 
-	@DeleteMapping("/associationroleprivilege/{id}")
+	@DeleteMapping("/associationroleprivileges/{id}")
 	public void deleteAssociationRolePrivilege(@PathVariable("id") final Long id) {
 		associationRolePrivilegeService.deleteAssociationRolePrivilege(id);
 	}
