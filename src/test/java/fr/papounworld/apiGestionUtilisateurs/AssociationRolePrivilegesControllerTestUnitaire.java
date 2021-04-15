@@ -27,7 +27,7 @@ import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
 @WebMvcTest({ AssociationRolePrivilegesController.class })
-public class AssociationRolePrivilegeTestUnitaire {
+public class AssociationRolePrivilegesControllerTestUnitaire {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -89,7 +89,7 @@ public class AssociationRolePrivilegeTestUnitaire {
 	}
 
 	@Test
-	public void given_associationRolePrivilegesn_when_delete_then_statutIsOk() throws Exception {
+	public void given_associationRolePrivileges_when_delete_then_statutIsOk() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders.delete("/associationroleprivileges/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();

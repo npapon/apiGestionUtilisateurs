@@ -20,12 +20,12 @@ public class FichierUtilisateurController {
 	@Autowired
 	private FichierUtilisateurService fichierUtilisateurService;
 
-	@GetMapping("/fichierUtilisateur")
+	@GetMapping("/fichierutilisateur")
 	public Iterable<FichierUtilisateur> getFichierUtilisateurs() {
 		return fichierUtilisateurService.getFichierUtilisateurs();
 	}
 
-	@GetMapping("/fichierUtilisateur/{id}")
+	@GetMapping("/fichierutilisateur/{id}")
 	public FichierUtilisateur getFichierUtilisateur(@PathVariable("id") final Long id) {
 		Optional<FichierUtilisateur> fichierUtilisateur = fichierUtilisateurService.getFichierUtilisateur(id);
 		if (fichierUtilisateur.isPresent()) {
@@ -35,12 +35,12 @@ public class FichierUtilisateurController {
 		}
 	}
 
-	@PostMapping("/fichierUtilisateur")
+	@PostMapping("/fichierutilisateur")
 	public FichierUtilisateur createFichierUtilisateur(@RequestBody FichierUtilisateur fichierUtilisateur) {
 		return fichierUtilisateurService.saveFichierUtilisateur(fichierUtilisateur);
 	}
 
-	@PutMapping("/fichierUtilisateur/{id}")
+	@PutMapping("/fichierutilisateur/{id}")
 	public FichierUtilisateur updateFichierUtilisateur(@PathVariable("id") final Long id,
 			@RequestBody FichierUtilisateur fichierUtilisateurBody) {
 
@@ -69,7 +69,7 @@ public class FichierUtilisateurController {
 		}
 	}
 
-	@DeleteMapping("/fichierUtilisateur/{id}")
+	@DeleteMapping("/fichierutilisateur/{id}")
 	public void deleteFichierUtilisateur(@PathVariable("id") final Long id) {
 		fichierUtilisateurService.deleteFichierUtilisateur(id);
 	}

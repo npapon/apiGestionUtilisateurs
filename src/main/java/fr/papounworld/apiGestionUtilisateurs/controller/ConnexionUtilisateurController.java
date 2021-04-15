@@ -20,12 +20,12 @@ public class ConnexionUtilisateurController {
 	@Autowired
 	private ConnexionUtilisateurService connexionUtilisateurService;
 
-	@GetMapping("/connexionUtilisateur")
+	@GetMapping("/connexionutilisateur")
 	public Iterable<ConnexionUtilisateur> getConnexionUtilisateurs() {
 		return connexionUtilisateurService.getConnexionUtilisateurs();
 	}
 
-	@GetMapping("/connexionUtilisateur/{id}")
+	@GetMapping("/connexionutilisateur/{id}")
 	public ConnexionUtilisateur getConnexionUtilisateur(@PathVariable("id") final Long id) {
 		Optional<ConnexionUtilisateur> connexionUtilisateur = connexionUtilisateurService.getConnexionUtilisateur(id);
 		if (connexionUtilisateur.isPresent()) {
@@ -35,12 +35,12 @@ public class ConnexionUtilisateurController {
 		}
 	}
 
-	@PostMapping("/connexionUtilisateur")
+	@PostMapping("/connexionutilisateur")
 	public ConnexionUtilisateur createConnexionUtilisateur(@RequestBody ConnexionUtilisateur connexionUtilisateur) {
 		return connexionUtilisateurService.saveConnexionUtilisateur(connexionUtilisateur);
 	}
 
-	@PutMapping("/connexionUtilisateur/{id}")
+	@PutMapping("/connexionutilisateur/{id}")
 	public ConnexionUtilisateur updateConnexionUtilisateur(@PathVariable("id") final Long id,
 			@RequestBody ConnexionUtilisateur connexionUtilisateurBody) {
 
@@ -64,7 +64,7 @@ public class ConnexionUtilisateurController {
 		}
 	}
 
-	@DeleteMapping("/connexionUtilisateur/{id}")
+	@DeleteMapping("/connexionutilisateur/{id}")
 	public void deleteConnexionUtilisateur(@PathVariable("id") final Long id) {
 		connexionUtilisateurService.deleteConnexionUtilisateur(id);
 	}

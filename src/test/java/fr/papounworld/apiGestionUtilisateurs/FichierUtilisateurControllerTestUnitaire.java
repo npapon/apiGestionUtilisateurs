@@ -16,29 +16,22 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.AssociationActionsUtilisateurController;
+import fr.papounworld.apiGestionUtilisateurs.controller.FichierUtilisateurController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
-import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
-import fr.papounworld.apiGestionUtilisateurs.service.AssociationActionsUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.FichierUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ AssociationActionsUtilisateurController.class })
-public class AssociationActionsUtilisateurTestUnitaire {
+@WebMvcTest({ FichierUtilisateurController.class })
+public class FichierUtilisateurControllerTestUnitaire {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@MockBean
-	private AssociationActionsUtilisateurService associationActionsUtilisateurService;
-
-	@MockBean
 	private UtilisateurService utilisateurService;
-
-	@MockBean
-	private ActionApplicativeService actionApplicativeService;
 
 	@MockBean
 	private InformationPersonnelleUtilisateurService informationPersonelleUtilisateurService;
@@ -50,7 +43,10 @@ public class AssociationActionsUtilisateurTestUnitaire {
 	private ConnexionUtilisateurService connexionUtilisateurService;
 
 	@MockBean
-	private ActionUtilisateurService actionUtilisateurService;
+	private ActionApplicativeService actionApplicativeService;
+
+	@MockBean
+	private FichierUtilisateurService fichierUtilisateurService;
 
 	@BeforeEach
 	public void init() {
@@ -59,34 +55,35 @@ public class AssociationActionsUtilisateurTestUnitaire {
 	}
 
 	@Test
-	public void given_associationActionsUtilisateur_when_get_then_statutIsOk() throws Exception {
+	public void given_fichierUtilisateur_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/associationactionsutilisateur")).andExpect(status().isOk());
+		mockMvc.perform(get("/fichierutilisateur")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_associationActionsUtilisateur_when_post_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.post("/associationactionsutilisateur")
-				.accept(MediaType.APPLICATION_JSON).content("   {\r\n" + "        \"id\": 9,\r\n"
-						+ "        \"idAction\": 8,\r\n" + "        \"idUtilisateur\": 2\r\n" + "    }")
+	public void given_fichierUtilisateur_when_post_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.post("/fichierutilisateur").accept(MediaType.APPLICATION_JSON)
+				.content("    {\r\n" + "  \r\n" + "        \"type\": \"image profil\",\r\n"
+						+ "        \"emplacement\": \"/images/imagesProfil/lpochat.jpg\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_associationActionsUtilisateur_when_put_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.put("/associationactionsutilisateur/{id}", 9)
-				.accept(MediaType.APPLICATION_JSON).content("   {\r\n" + "        \"id\": 9,\r\n"
-						+ "        \"idAction\": 8,\r\n" + "        \"idUtilisateur\": 2\r\n" + "    }")
+	public void given_fichierUtilisateur_when_put_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.put("/fichierutilisateur/{id}", 1)
+				.accept(MediaType.APPLICATION_JSON)
+				.content("    {\r\n" + "  \r\n" + "        \"type\": \"image profil\",\r\n"
+						+ "        \"emplacement\": \"/images/imagesProfil/lpochat.jpg\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_associationActionsUtilisateur_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/associationactionsutilisateur/{id}", 9);
+	public void given_fichierUtilisateur_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/fichierutilisateur/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}

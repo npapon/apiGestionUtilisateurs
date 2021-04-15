@@ -36,7 +36,7 @@ public class Role {
 	 */
 
 	@OneToMany
-	@JoinTable(name = "association_roles_privileges", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_privilege"))
+	@JoinTable(name = "association_role_privileges", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_privilege"))
 	private List<Privilege> privileges = new ArrayList<Privilege>();
 
 }

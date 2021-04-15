@@ -66,7 +66,7 @@ public class ActionApplicativeControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_actionApplicativeService_when_Get_then_statutIsOk() throws Exception {
+	public void given_actionApplicativeService_when_get_then_statutIsOk() throws Exception {
 
 		mockMvc.perform(get("/actionapplicative")).andExpect(status().isOk());
 	}
