@@ -53,10 +53,6 @@ public class FichierUtilisateurController {
 				fichierUtilisateurUrl.setIdUtilisateur(fichierUtilisateurBody.getIdUtilisateur());
 			}
 
-			if (fichierUtilisateurBody.getType() != null) {
-				fichierUtilisateurUrl.setType(fichierUtilisateurBody.getType());
-			}
-
 			if (fichierUtilisateurBody.getEmplacement() != null) {
 				fichierUtilisateurUrl.setEmplacement(fichierUtilisateurBody.getEmplacement());
 			}
