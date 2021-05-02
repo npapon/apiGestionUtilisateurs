@@ -13,18 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UtilisateurControllerTestIntegration {
+public class FichierUtilisateurControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	// $[0] car c'est un tableau
 	@Test
-	public void given_mockMvc_when_getUtilisateur1_then_loginIsNPAPON() {
+	public void given_mockMvc_when_fichierUtilisateur1_then_typeIsImageProfil() {
 
 		try {
-			mockMvc.perform(get("/utilisateur")).andExpect(status().isOk())
-					.andExpect(jsonPath("$[0].login", is("NPAPON")));
+			mockMvc.perform(get("/fichierutilisateur")).andExpect(status().isOk())
+					.andExpect(jsonPath("$[0].id", is(1)));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

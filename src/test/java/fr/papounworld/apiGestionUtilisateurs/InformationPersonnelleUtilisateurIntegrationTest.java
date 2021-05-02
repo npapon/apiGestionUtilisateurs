@@ -13,18 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AssociationActionsUtilisateurControllerTestIntegration {
+public class InformationPersonnelleUtilisateurIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	// $[0] car c'est un tableau
 	@Test
-	public void given_mockMvc_when_associationActionsUtilisateur1_then_idActions8() {
+	public void given_mockMvc_when_getInformationPersonnelleUtilisateur1_then_prenomIsNicolas() {
 
 		try {
-			mockMvc.perform(get("/associationactionsutilisateur")).andExpect(status().isOk())
-					.andExpect(jsonPath("$[0].idAction", is(8)));
+			mockMvc.perform(get("/informationpersonnelle")).andExpect(status().isOk())
+					.andExpect(jsonPath("$[0].prenom", is("test")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

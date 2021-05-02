@@ -16,15 +16,15 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.ConnexionUtilisateurController;
+import fr.papounworld.apiGestionUtilisateurs.controller.PrivilegeController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
-import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.PrivilegeService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ ConnexionUtilisateurController.class })
-public class ConnexionUtilisateurControllerTestUnitaire {
+@WebMvcTest({ PrivilegeController.class })
+public class PrivilegeControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -33,7 +33,7 @@ public class ConnexionUtilisateurControllerTestUnitaire {
 	private UtilisateurService utilisateurService;
 
 	@MockBean
-	private InformationPersonnelleUtilisateurService informationPersonelleUtilisateurService;
+	private ActionApplicativeService actionApplicativeService;
 
 	@MockBean
 	private RoleService roleService;
@@ -42,7 +42,7 @@ public class ConnexionUtilisateurControllerTestUnitaire {
 	private ConnexionUtilisateurService connexionUtilisateurService;
 
 	@MockBean
-	private ActionApplicativeService actionApplicativeService;
+	private PrivilegeService privilegeService;
 
 	@BeforeEach
 	public void init() {
@@ -51,35 +51,34 @@ public class ConnexionUtilisateurControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_connexionUtilisateur_when_get_then_statutIsOk() throws Exception {
+	public void given_privilege_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/connexionutilisateur")).andExpect(status().isOk());
+		mockMvc.perform(get("/privilege")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_connexionUtilisateur_when_post_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.post("/connexionutilisateur").accept(MediaType.APPLICATION_JSON)
-				.content("{\r\n" + "    \"id\": 1,\r\n" + "    \"utilisateur\": {\r\n" + "        \"id\": 1\r\n"
-						+ "    },\r\n" + "    \"connexionDate\": \"2021-03-24T17:45:10.000+00:00\"\r\n" + "}")
+	public void given_privilege_when_post_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.post("/privilege").accept(MediaType.APPLICATION_JSON)
+				.content("  {\r\n" + "        \"id\": 1,\r\n" + "        \"libelle\": \"PAGE_ADMIN\",\r\n"
+						+ "        \"impact\": \"MODIFICATION\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_connexionUtilisateur_when_put_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.put("/connexionutilisateur/{id}", 1)
-				.accept(MediaType.APPLICATION_JSON)
-				.content("{\r\n" + "    \"id\": 1,\r\n" + "    \"utilisateur\": {\r\n" + "        \"id\": 1\r\n"
-						+ "    },\r\n" + "    \"connexionDate\": \"2021-03-24T17:45:10.000+00:00\"\r\n" + "}")
+	public void given_privilege_when_put_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.put("/privilege/{id}", 1).accept(MediaType.APPLICATION_JSON)
+				.content("  {\r\n" + "        \"id\": 1,\r\n" + "        \"libelle\": \"PAGE_ADMIN\",\r\n"
+						+ "        \"impact\": \"MODIFICATION\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_connexionUtilisateur_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/connexionutilisateur/{id}", 1);
+	public void given_privilege_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/privilege/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}

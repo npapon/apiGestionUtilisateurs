@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.InformationPersonnelleUtilisateurController;
+import fr.papounworld.apiGestionUtilisateurs.controller.ActionUtilisateurController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
@@ -24,8 +24,8 @@ import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtili
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ InformationPersonnelleUtilisateurController.class })
-public class InformationPersonnelleUtilisateurControllerTestUnitaire {
+@WebMvcTest({ ActionUtilisateurController.class })
+public class ActionUtilisateurControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -46,7 +46,7 @@ public class InformationPersonnelleUtilisateurControllerTestUnitaire {
 	private ConnexionUtilisateurService connexionUtilisateurService;
 
 	@MockBean
-	private ActionUtilisateurService informationPersonnelleUtilisateurService;
+	private ActionUtilisateurService actionUtilisateurService;
 
 	@BeforeEach
 	public void init() {
@@ -55,40 +55,35 @@ public class InformationPersonnelleUtilisateurControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_informationPersonnelleUtilisateur_when_get_then_statutIsOk() throws Exception {
+	public void given_actionUtilisateur_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/informationpersonnelle")).andExpect(status().isOk());
+		mockMvc.perform(get("/actionutilisateur")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_informationPersonnelleUtilisateur_when_post_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.post("/informationpersonnelle")
-				.accept(MediaType.APPLICATION_JSON)
-				.content("{\r\n" + "    \"id\": 1,\r\n" + "    \"prenom\": \"nicolas\",\r\n"
-						+ "    \"nom\": \"papon\",\r\n" + "    \"email\": \"npapon@live.fr\",\r\n"
-						+ "    \"adresse\": \"11 rue Yves Kermen, 92100 Boulogne-Billancourt\",\r\n"
-						+ "    \"telephone\": \"0670177280\"\r\n" + "}")
+	public void given_actionUtilisateur_when_post_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.post("/actionutilisateur").accept(MediaType.APPLICATION_JSON)
+				.content("   \r\n" + "{\"action\": \"connexion\",\r\n" + "    \"actionDate\": null,\r\n"
+						+ "    \"utilisateur\": {\r\n" + "        \"id\":  63}}")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_informationPersonnelleUtilisateur_when_put_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.put("/informationpersonnelle/{id}", 1)
+	public void given_actionUtilisateur_when_put_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.put("/actionutilisateur/{id}", 63)
 				.accept(MediaType.APPLICATION_JSON)
-				.content("{\r\n" + "    \"id\": 1,\r\n" + "    \"prenom\": \"nicolas\",\r\n"
-						+ "    \"nom\": \"papon\",\r\n" + "    \"email\": \"npapon@live.fr\",\r\n"
-						+ "    \"adresse\": \"11 rue Yves Kermen, 92100 Boulogne-Billancourt\",\r\n"
-						+ "    \"telephone\": \"0670177280\"\r\n" + "}")
+				.content("   \r\n" + "{\"action\": \"connexion\",\r\n" + "    \"actionDate\": null,\r\n"
+						+ "    \"utilisateur\": {\r\n" + "        \"id\":  63}}")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_informationPersonnelleUtilisateur_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/informationpersonnelle/{id}", 1);
+	public void given_actionUtilisateur_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/actionutilisateur/{id}", 63);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}

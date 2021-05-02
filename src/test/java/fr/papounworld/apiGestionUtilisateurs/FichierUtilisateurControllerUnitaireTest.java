@@ -16,25 +16,22 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.ActionUtilisateurController;
+import fr.papounworld.apiGestionUtilisateurs.controller.FichierUtilisateurController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
-import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.FichierUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ ActionUtilisateurController.class })
-public class ActionUtilisateurControllerTestUnitaire {
+@WebMvcTest({ FichierUtilisateurController.class })
+public class FichierUtilisateurControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@MockBean
 	private UtilisateurService utilisateurService;
-
-	@MockBean
-	private ActionApplicativeService actionApplicativeService;
 
 	@MockBean
 	private InformationPersonnelleUtilisateurService informationPersonelleUtilisateurService;
@@ -46,7 +43,10 @@ public class ActionUtilisateurControllerTestUnitaire {
 	private ConnexionUtilisateurService connexionUtilisateurService;
 
 	@MockBean
-	private ActionUtilisateurService actionUtilisateurService;
+	private ActionApplicativeService actionApplicativeService;
+
+	@MockBean
+	private FichierUtilisateurService fichierUtilisateurService;
 
 	@BeforeEach
 	public void init() {
@@ -55,34 +55,35 @@ public class ActionUtilisateurControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_actionUtilisateur_when_get_then_statutIsOk() throws Exception {
+	public void given_fichierUtilisateur_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/actionutilisateur")).andExpect(status().isOk());
+		mockMvc.perform(get("/fichierutilisateur")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_actionUtilisateur_when_post_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.post("/actionutilisateur").accept(MediaType.APPLICATION_JSON)
-				.content("   \r\n" + "{\"action\": \"connexion\",\r\n" + "    \"actionDate\": null,\r\n"
-						+ "    \"utilisateur\": {\r\n" + "        \"id\": 2}}")
+	public void given_fichierUtilisateur_when_post_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.post("/fichierutilisateur").accept(MediaType.APPLICATION_JSON)
+				.content("    {\r\n" + "  \r\n" + "        \"type\": \"image profil\",\r\n"
+						+ "        \"emplacement\": \"/images/imagesProfil/lpochat.jpg\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_actionUtilisateur_when_put_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.put("/actionutilisateur/{id}", 2)
-				.accept(MediaType.APPLICATION_JSON).content("   \r\n" + "{\"action\": \"connexion\",\r\n"
-						+ "    \"actionDate\": null,\r\n" + "    \"utilisateur\": {\r\n" + "        \"id\": 2}}")
+	public void given_fichierUtilisateur_when_put_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.put("/fichierutilisateur/{id}", 1)
+				.accept(MediaType.APPLICATION_JSON)
+				.content("    {\r\n" + "  \r\n" + "        \"type\": \"image profil\",\r\n"
+						+ "        \"emplacement\": \"/images/imagesProfil/lpochat.jpg\"\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_actionUtilisateur_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/actionutilisateur/{id}", 1);
+	public void given_fichierUtilisateur_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/fichierutilisateur/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}

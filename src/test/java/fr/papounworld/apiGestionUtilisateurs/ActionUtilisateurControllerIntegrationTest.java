@@ -13,17 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RoleControllerTestIntegration {
+public class ActionUtilisateurControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	// $[0] car c'est un tableau
 	@Test
-	public void given_mockMvc_when_getRole1_then_libelleIsADMIN() {
+	public void given_mockMvc_when_ActionUtilisateur1_then_actionIsConnexion() {
 
 		try {
-			mockMvc.perform(get("/role")).andExpect(status().isOk()).andExpect(jsonPath("$[0].libelle", is("ADMIN")));
+			mockMvc.perform(get("/actionutilisateur")).andExpect(status().isOk())
+					.andExpect(jsonPath("$[0].action", is("connexion")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

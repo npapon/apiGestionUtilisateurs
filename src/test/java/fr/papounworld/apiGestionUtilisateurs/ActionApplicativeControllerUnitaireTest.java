@@ -30,7 +30,7 @@ import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
 @WebMvcTest({ ActionApplicativeController.class, ActionApplicativeScriptController.class,
 		ActionApplicativeExtractionController.class })
-public class ActionApplicativeControllerTestUnitaire {
+public class ActionApplicativeControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;

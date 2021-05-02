@@ -16,17 +16,24 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.RecompenseController;
+import fr.papounworld.apiGestionUtilisateurs.controller.AssociationRolesUtilisateurController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
+import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.AssociationRolesUtilisateurService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
-import fr.papounworld.apiGestionUtilisateurs.service.RecompenseService;
+import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.PrivilegeService;
+import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ RecompenseController.class })
-public class RecompenseControllerTestUnitaire {
+@WebMvcTest({ AssociationRolesUtilisateurController.class })
+public class AssociationRolesUtilisateurControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+
+	@MockBean
+	private AssociationRolesUtilisateurService associationRolePrivilegeService;
 
 	@MockBean
 	private UtilisateurService utilisateurService;
@@ -35,10 +42,19 @@ public class RecompenseControllerTestUnitaire {
 	private ActionApplicativeService actionApplicativeService;
 
 	@MockBean
-	private RecompenseService recompenseService;
+	private InformationPersonnelleUtilisateurService informationPersonelleUtilisateurService;
+
+	@MockBean
+	private RoleService roleService;
+
+	@MockBean
+	private PrivilegeService privilegeService;
 
 	@MockBean
 	private ConnexionUtilisateurService connexionUtilisateurService;
+
+	@MockBean
+	private ActionUtilisateurService actionUtilisateurService;
 
 	@BeforeEach
 	public void init() {
@@ -47,34 +63,34 @@ public class RecompenseControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_recompense_when_get_then_statutIsOk() throws Exception {
+	public void given_associationRolesUtilisateur_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/recompense")).andExpect(status().isOk());
+		mockMvc.perform(get("/associationrolesutilisateur")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_recompense_when_post_then_statutIsOk() throws Exception {
+	public void given_associationRolesUtilisateur_when_post_then_statutIsOk() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders
-				.post("/recompense").accept(MediaType.APPLICATION_JSON).content(" {\r\n" + "        \"id\": 1,\r\n"
-						+ "        \"libelle\": \"première connexion\"\r\n" + "    }")
+				.post("/associationrolesutilisateur").accept(MediaType.APPLICATION_JSON).content("{\r\n"
+						+ "    \"id\": 1,\r\n" + "    \"idRole\": 1,\r\n" + "    \"idUtilisateur\": 1\r\n" + "}")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_recompense_when_put_then_statutIsOk() throws Exception {
+	public void given_associationRolesUtilisateur_when_put_then_statutIsOk() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders
-				.put("/recompense/{id}", 1).accept(MediaType.APPLICATION_JSON).content(" {\r\n"
-						+ "        \"id\": 1,\r\n" + "        \"libelle\": \"première connexion\"\r\n" + "    }")
+				.put("/associationrolesutilisateur/{id}", 1).accept(MediaType.APPLICATION_JSON).content("{\r\n"
+						+ "    \"id\": 1,\r\n" + "    \"idRole\": 1,\r\n" + "    \"idUtilisateur\": 1\r\n" + "}")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_recompense_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/recompense/{id}", 1);
+	public void given_associationRolesUtilisateur_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/associationrolesutilisateur/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}

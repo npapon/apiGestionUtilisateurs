@@ -13,18 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RecompenseControllerTestIntegration {
+public class UtilisateurControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	// $[0] car c'est un tableau
 	@Test
-	public void given_mockMvc_when_getRecompense1_then_libelleIsPremiereConnexion() {
+	public void given_mockMvc_when_getUtilisateur1_then_loginIsNPAPON() {
 
 		try {
-			mockMvc.perform(get("/recompense")).andExpect(status().isOk())
-					.andExpect(jsonPath("$[0].libelle", is("première connexion")));
+			mockMvc.perform(get("/utilisateur")).andExpect(status().isOk())
+					.andExpect(jsonPath("$[0].login", is("test")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

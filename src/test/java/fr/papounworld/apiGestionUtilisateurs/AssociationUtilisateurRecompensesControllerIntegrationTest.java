@@ -13,18 +13,18 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PrivilegeControllerTestIntegration {
+public class AssociationUtilisateurRecompensesControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	// $[0] car c'est un tableau
 	@Test
-	public void given_mockMvc_when_getPrivilege1_then_libelleIsPAGE_ADMIN() {
+	public void given_mockMvc_when_associationUtilisateurRecompenses1_then_idUtilisateurIs2() {
 
 		try {
-			mockMvc.perform(get("/privilege")).andExpect(status().isOk())
-					.andExpect(jsonPath("$[0].libelle", is("PAGE_ADMIN")));
+			mockMvc.perform(get("/associationutilisateursrecompenses")).andExpect(status().isOk())
+					.andExpect(jsonPath("$[0].id", is(7)));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -16,17 +16,24 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import fr.papounworld.apiGestionUtilisateurs.controller.RoleController;
+import fr.papounworld.apiGestionUtilisateurs.controller.AssociationRolePrivilegesController;
 import fr.papounworld.apiGestionUtilisateurs.service.ActionApplicativeService;
+import fr.papounworld.apiGestionUtilisateurs.service.ActionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.AssociationRolePrivilegesService;
 import fr.papounworld.apiGestionUtilisateurs.service.ConnexionUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.InformationPersonnelleUtilisateurService;
+import fr.papounworld.apiGestionUtilisateurs.service.PrivilegeService;
 import fr.papounworld.apiGestionUtilisateurs.service.RoleService;
 import fr.papounworld.apiGestionUtilisateurs.service.UtilisateurService;
 
-@WebMvcTest({ RoleController.class })
-public class RoleControllerTestUnitaire {
+@WebMvcTest({ AssociationRolePrivilegesController.class })
+public class AssociationRolePrivilegesControllerUnitaireTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+
+	@MockBean
+	private AssociationRolePrivilegesService associationRolePrivilegeService;
 
 	@MockBean
 	private UtilisateurService utilisateurService;
@@ -35,10 +42,19 @@ public class RoleControllerTestUnitaire {
 	private ActionApplicativeService actionApplicativeService;
 
 	@MockBean
+	private InformationPersonnelleUtilisateurService informationPersonelleUtilisateurService;
+
+	@MockBean
 	private RoleService roleService;
 
 	@MockBean
+	private PrivilegeService privilegeService;
+
+	@MockBean
 	private ConnexionUtilisateurService connexionUtilisateurService;
+
+	@MockBean
+	private ActionUtilisateurService actionUtilisateurService;
 
 	@BeforeEach
 	public void init() {
@@ -47,34 +63,34 @@ public class RoleControllerTestUnitaire {
 	}
 
 	@Test
-	public void given_role_when_get_then_statutIsOk() throws Exception {
+	public void given_associationRolePrivileges_when_get_then_statutIsOk() throws Exception {
 
-		mockMvc.perform(get("/role")).andExpect(status().isOk());
+		mockMvc.perform(get("/associationroleprivileges")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void given_role_when_post_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders
-				.post("/role").accept(MediaType.APPLICATION_JSON).content(" {\r\n" + "        \"id\": 1,\r\n"
-						+ "        \"libelle\": \"première connexion\"\r\n" + "    }")
+	public void given_associationRolePrivileges_when_post_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.post("/associationroleprivileges")
+				.accept(MediaType.APPLICATION_JSON).content(" {\r\n" + "        \"id\": 1,\r\n"
+						+ "        \"idRole\": 1,\r\n" + "        \"idPrivilege\": 1\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_role_when_put_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders
-				.put("/role/{id}", 1).accept(MediaType.APPLICATION_JSON).content(" {\r\n" + "        \"id\": 1,\r\n"
-						+ "        \"libelle\": \"première connexion\"\r\n" + "    }")
+	public void given_associationRolePrivileges_when_put_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.put("/associationroleprivileges/{id}", 1)
+				.accept(MediaType.APPLICATION_JSON).content(" {\r\n" + "        \"id\": 1,\r\n"
+						+ "        \"idRole\": 1,\r\n" + "        \"idPrivilege\": 1\r\n" + "    }")
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
-	public void given_role_when_delete_then_statutIsOk() throws Exception {
-		RequestBuilder request = MockMvcRequestBuilders.delete("/role/{id}", 1);
+	public void given_associationRolePrivileges_when_delete_then_statutIsOk() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.delete("/associationroleprivileges/{id}", 1);
 
 		MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 	}
